@@ -1,0 +1,328 @@
+{
+  "info": {
+    "_postman_id": "employment-portal-collection",
+    "name": "Employment_Portal_Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Common APIs",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"full_name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"john1234\",\n  \"mobile_no\": \"9876543210\",\n  \"city\": \"Ahmedabad\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/signup",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["signup"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"john1234\",\n  \"role\": \"User\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["login"]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/logout",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["logout"]
+            }
+          }
+        },
+        {
+          "name": "Session",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/session",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["session"]
+            }
+          }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"newPassword\": \"newpass1234\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/changePassword",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["changePassword"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Public APIs",
+      "item": [
+        {
+          "name": "Get Job Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/jobCategories",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["jobCategories"]
+            }
+          }
+        },
+        {
+          "name": "Get Job Types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/jobTypes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["jobTypes"]
+            }
+          }
+        },
+        {
+          "name": "Get Jobs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/jobs",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["jobs"]
+            }
+          }
+        },
+        {
+          "name": "Get Jobs (Filter by Category)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/jobs?category_id=CATEGORY_OBJECT_ID",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["jobs"],
+              "query": [
+                { "key": "category_id", "value": "CATEGORY_OBJECT_ID" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Jobs (Filter by Job Type)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/jobs?job_type_id=JOB_TYPE_OBJECT_ID",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["jobs"],
+              "query": [
+                { "key": "job_type_id", "value": "JOB_TYPE_OBJECT_ID" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Jobs (Filter by Salary Range)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/jobs?min_salary=20000&max_salary=80000",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["jobs"],
+              "query": [
+                { "key": "min_salary", "value": "20000" },
+                { "key": "max_salary", "value": "80000" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Job Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/jobs/JOB_OBJECT_ID",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["jobs", "JOB_OBJECT_ID"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User APIs",
+      "item": [
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"full_name\": \"John Doe Updated\",\n  \"mobile_no\": \"9876543211\",\n  \"city\": \"Surat\",\n  \"profile_image\": \"https://example.com/profile.jpg\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/user/updateProfile",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "updateProfile"]
+            }
+          }
+        },
+        {
+          "name": "Add Job Inquiry",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"job_id\": \"JOB_OBJECT_ID\",\n  \"inquiry_message\": \"I am interested in this position. Could you please provide more details about the required experience?\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/user/addJobInquiry",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "addJobInquiry"]
+            }
+          }
+        },
+        {
+          "name": "My Job Inquiries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/user/myJobInquiries",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "myJobInquiries"]
+            }
+          }
+        },
+        {
+          "name": "Add General Inquiry",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inquiry_subject\": \"Job Posting Process\",\n  \"inquiry_message\": \"I wanted to know how companies can post jobs on this platform.\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/user/addGeneralInquiry",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "addGeneralInquiry"]
+            }
+          }
+        },
+        {
+          "name": "My General Inquiries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/user/myGeneralInquiries",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "myGeneralInquiries"]
+            }
+          }
+        },
+        {
+          "name": "Add Feedback",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"feedback_message\": \"Great platform! Very easy to find relevant job listings.\",\n  \"rating\": 5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/user/addFeedback",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["user", "addFeedback"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
