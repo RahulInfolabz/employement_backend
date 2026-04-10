@@ -24,8 +24,10 @@ const { MyJobInquiries } = require("./apis/user/MyJobInquiries");
 const { AddGeneralInquiry } = require("./apis/user/AddGeneralInquiry");
 const { MyGeneralInquiries } = require("./apis/user/MyGeneralInquiries");
 const { AddFeedback } = require("./apis/user/AddFeedback");
+const MongoStore = require("connect-mongo").default;
 
 // ─────────────────────────────────────────────────────────────────────────────
+
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -33,18 +35,27 @@ const PORT = process.env.PORT || 8000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.set("trust proxy", 1);
+
 app.use(
   session({
-    secret: "employment_portal_secret",
+    secret: "secret",
     resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 1 day
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI
+    }),
+    cookie: {
+      secure: true,
+      httpOnly: true,
+      sameSite: "none"
+    }
   })
 );
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: ["http://localhost:3000", "http://localhost:3001", "http://localhost:5173", "http://localhost:5174"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
